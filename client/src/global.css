@@ -78,3 +78,36 @@ select,
     user-select: none;
     cursor: pointer;
 }
+
+.cell {
+
+    @apply aspect-square rounded-[0.25rem];
+
+    &.empty {
+        box-shadow: inset 4px 2px 8px 0px #0000007f;
+    }
+
+    &.filled {
+
+        box-shadow: inset -4px -2px 4px 0px #0000007f,
+            inset 2px 4px 4px 0px #ffffff3f;
+        @apply relative bg-current;
+
+        /* &::after,
+        &::before {
+            @apply top-0.5 left-0.5 absolute bg-current brightness-200;
+            content: "";
+            border-radius: 0.5rem 0.25rem 0.25rem 0.25rem;
+
+        } */
+
+        &::after {
+            @apply w-1/6 h-1/2;
+
+        }
+
+        &::before {
+            @apply w-1/2 h-1/6;
+        }
+    }
+}

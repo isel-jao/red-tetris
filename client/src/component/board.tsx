@@ -31,13 +31,10 @@ export function Board({ className, ...props }: BoardProps) {
             return (
               <div
                 key={`${rowIndex}-${colIndex}`}
-                className={cn(
-                  "aspect-square rounded-md",
-                  TETROMINOES[cell!]?.color,
-                  {
-                    "bg-black/30": !cell,
-                  }
-                )}
+                className={cn("cell", TETROMINOES[cell!]?.color, {
+                  empty: !cell,
+                  filled: cell,
+                })}
               ></div>
             );
           })}

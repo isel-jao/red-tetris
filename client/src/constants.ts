@@ -31,7 +31,7 @@ export const TETROMINOES: Record<
         [0, 1, 0, 0],
       ],
     ],
-    color: "bg-rose-500",
+    color: "text-rose-500",
   },
   O: {
     shape: "O",
@@ -41,7 +41,7 @@ export const TETROMINOES: Record<
         [1, 1],
       ],
     ],
-    color: "bg-yellow-500",
+    color: "text-yellow-500",
   },
   T: {
     shape: "T",
@@ -67,7 +67,7 @@ export const TETROMINOES: Record<
         [0, 1, 0],
       ],
     ],
-    color: "bg-purple-500",
+    color: "text-purple-500",
   },
   S: {
     shape: "S",
@@ -83,7 +83,7 @@ export const TETROMINOES: Record<
         [0, 0, 1],
       ],
     ],
-    color: "bg-green-500",
+    color: "text-green-500",
   },
   Z: {
     shape: "Z",
@@ -99,7 +99,7 @@ export const TETROMINOES: Record<
         [0, 1, 0],
       ],
     ],
-    color: "bg-red-500",
+    color: "text-red-500",
   },
   J: {
     shape: "J",
@@ -125,7 +125,7 @@ export const TETROMINOES: Record<
         [1, 1, 0],
       ],
     ],
-    color: "bg-blue-500",
+    color: "text-blue-500",
   },
   L: {
     shape: "L",
@@ -151,6 +151,6 @@ export const TETROMINOES: Record<
         [0, 1, 0],
       ],
     ],
-    color: "bg-cyan-500",
+    color: "text-cyan-500",
   },
 };
