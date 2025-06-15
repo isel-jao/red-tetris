@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(express.static(join(process.cwd(), "dist")));
 
 // API routes (if you have any)
-app.get("/api/users", (req, res) => {
-  res.json({ users: ["John", "Jane"] });
+app.get("/", (req, res) => {
+  res.text("Welcome to the Tetris Game Server!");
 });
 
 const server = createServer(app);
