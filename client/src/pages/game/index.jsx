@@ -150,9 +150,13 @@ export default function GamePage() {
             <Link to="/">
               <button className="link">Return to lobby</button>
             </Link>
-            <button onClick={resetGame} className="filled">
-              Reset game
-            </button>
+            {isLeader ? (
+              <button onClick={resetGame} className="filled">
+                Reset game
+              </button>
+            ) : (
+              <span className="px-4 py-2">Waiting for leader to reset...</span>
+            )}
           </div>
         </main>
       )}

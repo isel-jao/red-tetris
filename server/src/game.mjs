@@ -8,7 +8,7 @@ export class Game {
     this.players = [];
     this.onUpdate = onUpdate;
     this.intervalId = null;
-    this.duration = 2000;
+    this.duration = 1000;
   }
   addPlayer(playerId) {
     if (this.players.length >= 2) {
