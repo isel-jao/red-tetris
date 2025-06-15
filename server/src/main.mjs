@@ -2,8 +2,14 @@ import express from "express";
 import cors from "cors";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
-import { join } from "node:path";
 import { Game } from "./game.mjs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+console.log("Server directory:", __dirname);
 
 const port = process.env.PORT || 3000;
 
@@ -11,13 +17,15 @@ const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-// Serve static files from the dist directory
-app.use(express.static(join(process.cwd(), "dist")));
+app.use(express.urlencoded({ extended: true }));
 
-// API routes (if you have any)
-app.get("/", (req, res) => {
-  res.text("Welcome to the Tetris Game Server!");
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(join(__dirname, "..", "..", "client/dist")));
+
+  app.get(/^(?!\/api).*/, (req, res) => {
+    res.sendFile(join(__dirname, "..", "..", "client/dist/index.html"));
+  });
+}
 
 const server = createServer(app);
 const io = new Server(server, {

@@ -1,0 +1,13 @@
+{
+  "name": "red-tetris",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "cd client && pnpm run build",
+    "start": "cd server && pnpm run start"
+  },
+  "keywords": [],
+  "author": "isel-jao",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0"
+}

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch src/main.mjs --env-file .env"
+    "dev": "node --watch src/main.mjs --env-file .env",
+    "start": "NODE_ENV=production node src/main.mjs"
   },
   "keywords": [],
   "author": "",
