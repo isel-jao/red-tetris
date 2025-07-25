@@ -35,16 +35,3 @@ export const SHAPES = {
     [0, 0, 0],
   ],
 };
-
-function rotateShape(shape) {
-  return shape[0].map((_, index) => shape.map((row) => row[index]).reverse());
-}
-
-function getRandomShape() {
-  const keys = Object.keys(SHAPES);
-  const randomKey = keys[Math.floor(Math.random() * keys.length)];
-  return {
-    shape: SHAPES[randomKey],
-    type: randomKey,
-  };
-}
