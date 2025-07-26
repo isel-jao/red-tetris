@@ -80,12 +80,17 @@ export class Game {
     this.gameLoop();
   }
 
-  restart() {
+  reset() {
     this.status = "waiting";
+    // Clear the existing game loop interval
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
     for (const player of this.players) {
       if (!player) continue;
       player.board = this.creatEmptyBoard();
-      player.currentTetromino = this.getRandomTetromino();
+      player.currentTetromino = null; // Clear current tetromino
       player.nextTetromino = this.getRandomTetromino();
       player.linesCleared = 0;
     }
@@ -93,7 +98,7 @@ export class Game {
       status: this.status,
       players: this.players,
     });
-    this.gameLoop();
+    // Don't start game loop - only start when game status changes to "playing"
   }
   gameLoop() {
     if (this.intervalId) clearInterval(this.intervalId);

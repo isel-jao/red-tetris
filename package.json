@@ -12,7 +12,11 @@
     "test:coverage:server": "cd server && npm run test:coverage",
     "test:watch": "concurrently \"npm run test:watch:client\" \"npm run test:watch:server\"",
     "test:watch:client": "cd client && npm run test:watch",
-    "test:watch:server": "cd server && npm run test:watch"
+    "test:watch:server": "cd server && npm run test:watch",
+    "build:client": "cd client && npm run build",
+    "build": "pnpm run build:client",
+    "start:server": "cd server && npm start",
+    "start": "pnpm run start:server"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

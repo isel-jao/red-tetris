@@ -126,10 +126,10 @@ io.on("connection", (socket) => {
       game.start();
     }
   });
-  socket.on("game:restart", () => {
+  socket.on("game:reset", () => {
     const { game } = socketToGame[socket.id] || {};
     if (game && game.status === "finished") {
-      game.restart();
+      game.reset();
     }
   });
 
