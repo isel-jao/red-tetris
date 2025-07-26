@@ -49,7 +49,8 @@ export function useGameLogic(socket, isConnected, socketError, room, user) {
 
   // Handle game updates
   useEffect(() => {
-    if (connectionState !== "loaded" || !socket || !isConnected || socketError) return;
+    if (connectionState !== "loaded" || !socket || !isConnected || socketError)
+      return;
 
     socket.on("game:updated", (updated) => {
       dispatch(updateGame(updated));

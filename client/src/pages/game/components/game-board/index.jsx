@@ -1,6 +1,10 @@
-import { cn } from "../../../utils/functions";
+import { cn } from "../../../../utils/functions";
+import { useAppSelector } from "../../../../store/hooks";
+import { selectCurrentUser } from "../../../../store/slices/gameSlice";
 
-export default function GameBoard({ board, userId, currentUser }) {
+export function GameBoard({ board, userId }) {
+  const currentUser = useAppSelector(selectCurrentUser);
+
   return (
     <div className="flex flex-col gap-2 items-center">
       <h2 className="text-lg">

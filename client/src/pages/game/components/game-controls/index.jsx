@@ -1,15 +1,19 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
+import { useAppSelector } from "../../../../store/hooks";
+import {
+  selectGame,
+  selectIsLeader,
+  selectCurrentUser,
+} from "../../../../store/slices/gameSlice";
 
-export default function GameControls({ 
-  game, 
-  isLeader, 
-  currentRoom, 
-  onStartGame, 
-  onResetGame 
-}) {
+export function GameControls({ onStartGame }) {
+  const { room } = useParams();
+  const game = useAppSelector(selectGame);
+  const isLeader = useAppSelector(selectIsLeader);
+
   return (
     <div className="flex justify-between items-center">
-      <h1 className="text-2xl">Game game: {currentRoom}</h1>
+      <h1 className="text-2xl">Game game: {room}</h1>
       {isLeader && game.status === "waiting" && (
         <button onClick={onStartGame} className="filled mt-4 mx-auto">
           Start Game
@@ -24,7 +28,10 @@ export default function GameControls({
   );
 }
 
-export function GameOverModal({ game, currentUser, isLeader, onResetGame }) {
+export function GameOverModal({ onResetGame }) {
+  const game = useAppSelector(selectGame);
+  const currentUser = useAppSelector(selectCurrentUser);
+  const isLeader = useAppSelector(selectIsLeader);
   if (game.status !== "finished") return null;
 
   return (
