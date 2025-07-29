@@ -36,6 +36,7 @@ export function SocketConfig({
     })
   );
 
+  //
   const [error, setError] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
 

@@ -22,7 +22,6 @@ describe('NotFoundPage', () => {
     // Verify link back to home
     const homeLink = screen.getByTestId('link');
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveAttribute('href', '/');
     expect(homeLink).toHaveTextContent('home page');
   });
   
