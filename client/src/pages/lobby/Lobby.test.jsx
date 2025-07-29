@@ -6,8 +6,9 @@ import LobbyPage from './index';
 import { toast } from 'sonner';
 
 // Mock dependencies
+const mockNavigate = vi.fn();
 vi.mock('react-router', () => ({
-  useNavigate: () => vi.fn(() => {}),
+  useNavigate: () => mockNavigate,
 }));
 
 vi.mock('sonner', () => ({
@@ -40,8 +41,9 @@ describe('LobbyPage Component', () => {
   it('shows error toast when form submitted with empty fields', () => {
     render(<LobbyPage />);
     
-    const submitButton = screen.getByRole('button', { name: /join/i });
-    fireEvent.click(submitButton);
+    // Get the form by its method attribute
+    const form = document.querySelector('form[method="post"]');
+    fireEvent.submit(form);
     
     expect(toast.error).toHaveBeenCalledWith('Please fill in all fields.');
   });
@@ -65,8 +67,7 @@ describe('LobbyPage Component', () => {
 
   // Test successful form submission
   it('navigates to game room when form is submitted with valid inputs', () => {
-    const navigateMock = vi.fn();
-    vi.mocked(useNavigate).mockReturnValue(navigateMock);
+    // mockNavigate is already set up in the module mock
     
     render(<LobbyPage />);
     
@@ -80,6 +81,6 @@ describe('LobbyPage Component', () => {
     const submitButton = screen.getByRole('button', { name: /join/i });
     fireEvent.click(submitButton);
     
-    expect(navigateMock).toHaveBeenCalledWith('/testroom/testuser');
+    expect(mockNavigate).toHaveBeenCalledWith('/testroom/testuser');
   });
 });

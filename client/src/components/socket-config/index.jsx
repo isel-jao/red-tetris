@@ -1,16 +1,11 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { useOnMount } from "../../hooks/use-on-mount";
+import { SocketContext, useSocket } from "./SocketContext";
 
-const SocketContext = createContext(null);
+// Re-export the context and hook for convenience
+export { SocketContext, useSocket };
 
-export function useSocket() {
-  const context = useContext(SocketContext);
-  if (!context) {
-    throw new Error("useSocket must be used within a SocketProvider");
-  }
-  return context;
-}
 
 export function SocketConfig({
   children,
